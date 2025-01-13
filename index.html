@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+</head>
+<body>
+    <a-scene physics="debug: true; gravity: -9.81;">
+        <a-assets>
+            <a-asset-item id="bowling-pin" src="Pin.obj"></a-asset-item>
+            <a-asset-item id="bowling-pin-mtl" src="Pin.mtl"></a-asset-item>
+            <a-asset-item id="coffee-table" src="coffee_table.obj"></a-asset-item>
+            <a-asset-item id="coffee-table-mtl" src="coffee_table.mtl"></a-asset-item>
+            <a-asset-item id="rack" src="Rack.obj"></a-asset-item>
+            <a-asset-item id="radio" src="Vintage_soviet_radio.obj"></a-asset-item>
+
+            <img id="ball-texture" src="texture.png">
+            <img id="wooden-floor" src="BowlingWood_baseColor.png">
+            <img id="radio-texture" src ="Radio_rodina_BaceColor.png">
+            <img id="table-texture" src ="Cherry_honey.png">
+        </a-assets>
+
+        <a-entity environment="preset: forest;"></a-entity>
+
+        <a-box static-body src="#wooden-floor" depth="30" height="0.2" width="5" rotation="0 0 0" position="0 0 0"></a-box>
+
+        <a-sphere apply-force id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13s" mass="10"></a-sphere>
+
+        <a-entity obj-model="obj: #coffee-table;" material="src: #table-texture;" position="6 0 15" scale=".02 .02 .02"></a-entity>
+
+        <a-entity obj-model="obj: #rack;" position="-6 0 15"></a-entity>
+
+        <a-entity obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2 15" scale=".5 .5 .5"></a-entity>
+
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+            body="type: dynamic; mass: 5; shape: none;"
+            shape__main="shape: cylinder;
+                       height: 4;
+                       radiusTop: 0.6;
+                       radiusBottom: 0.6;
+                       offset: 0 2 0;"
+            position="-1.5 0 -14"
+            scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+            body="type: dynamic; mass: 5; shape: none;"
+            shape__main="shape: cylinder;
+                       height: 4;
+                       radiusTop: 0.6;
+                       radiusBottom: 0.6;
+                       offset: 0 2 0;"
+            position="-.5 0 -14"
+            scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                   height: 4;
+                   radiusTop: 0.6;
+                   radiusBottom: 0.6;
+                   offset: 0 2 0;"
+        position=".5 0 -14"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="1.5 0 -14"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="-1 0 -13"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="0 0 -13"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="1 0 -13"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="-.5 0 -12"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position=".5 0 -12"
+        scale=".5 .5 .5">
+        </a-entity>
+        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 5; shape: none;"
+        shape__main="shape: cylinder;
+                height: 4;
+                radiusTop: 0.6;
+                radiusBottom: 0.6;
+                offset: 0 2 0;"
+        position="0 0 -11"
+        scale=".5 .5 .5">
+        </a-entity>
+
+        <a-camera position="0 2 30" rotation="0 0 0">
+            <a-cursor></a-cursor>
+        </a-camera>
+    </a-scene>
+    <script src="main.js"></script>
+</body>
+</html>
