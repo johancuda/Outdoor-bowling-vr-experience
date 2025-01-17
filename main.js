@@ -13,7 +13,7 @@ AFRAME.registerComponent('apply-force', {
         const body = el.body; // Access the physics body
         if (body) {
           // Create a force vector and apply it
-          const force = new CANNON.Vec3(0, 0, -200); // Adjust force as needed
+          const force = new CANNON.Vec3(0, 0, -100); // Adjust force as needed
           const worldPoint = new CANNON.Vec3(0, 0, 0); // Apply at the center of the sphere
           body.applyImpulse(force, worldPoint); // Apply the impulse
           console.log("Force applied:", force);
@@ -25,3 +25,31 @@ AFRAME.registerComponent('apply-force', {
   });
 
 }
+
+AFRAME.registerComponent('play-sound', {
+    init: function() {
+      let el = this.el;
+      let collision_count = 0
+
+      setTimeout(() => {
+        el.addEventListener('collide', () => {
+          if(collision_count == 0){
+            el.setAttribute('sound', 'src: #strike; autoplay: true; volume: 1;');
+            collision_count++;
+          }
+        })
+      }, 1000)
+
+    }
+})
+
+AFRAME.registerComponent('play-button', {
+  init: function() {
+    let el = this.el;
+
+    el.addEventListener('click', () => {
+      console.log('salut')
+      el.components.sound.playSound();
+    })
+  }
+})
