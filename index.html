@@ -10,7 +10,7 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <a-scene physics="debug: true; gravity: -9.81;"d>
+    <a-scene physics="debug: true; gravity: -9.81;">
         <a-assets>
             <a-asset-item id="bowling-pin" src="Pin.obj"></a-asset-item>
             <a-asset-item id="bowling-pin-mtl" src="Pin.mtl"></a-asset-item>
@@ -19,16 +19,18 @@
             <a-asset-item id="coffee-table" src="coffee_table.obj"></a-asset-item>
             <a-asset-item id="coffee-table-mtl" src="coffee_table.mtl"></a-asset-item>
             <a-asset-item id="rack" src="Rack.obj"></a-asset-item>
+            <a-asset-item id="rack2" src="Rack2.obj"></a-asset-item>
             <a-asset-item id="radio" src="Vintage_soviet_radio.obj"></a-asset-item>
 
             <img id="ball-texture" src="texture.png">
+            <img id="ball-texture-2" src="ball_green.jpg">
+            <img id="ball-texture-3" src="ball_orange.jpg">
             <img id="wooden-floor" src="BowlingWood_baseColor.png">
             <img id="radio-texture" src ="Radio_rodina_BaceColor.png">
             <img id="table-texture" src ="Cherry_honey.png">
             <img id="wood" src ="wood.jpg">
             <img id="chair-wood" src ="chair_wood.jpg">
 
-            <audio id="forest" src="forest_sound.mp3" preload="auto"></audio>
             <audio id="strike" src="bowling_strike.mp3" preload="auto"></audio>
             <audio id="roll" src="bowling_roll.mp3" preload="auto"></audio>
             <audio id="music" src="jazz.mp3" preload="auto"></audio>
@@ -40,21 +42,26 @@
 
         <a-box static-body src="#wooden-floor" depth="30" height="0.2" width="5" rotation="0 0 0" position="0 0 0"></a-box>
 
-        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13" mass="10" sound="src: #roll; on: click; volume: 1;"></a-sphere>
+        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 -0.5 13" mass="10" sound="src: #roll; on: click; volume: 1;"></a-sphere>
 
-        <a-entity obj-model="obj: #coffee-table;" material="src: #table-texture;" position="6 0 17" scale=".03 .03 .03"></a-entity>
+        <a-entity obj-model="obj: #coffee-table;" material="src: #table-texture;" position="6 0 17" scale=".03 .03 .03" rotation="0 -135 0"></a-entity>
 
-        <a-entity obj-model="obj: #rack;" material="src: #wood;" position="-7 0 17" rotation="0 -45 0" scale="0.8 0.8 0.8"></a-entity>
+        <a-entity obj-model="obj: #rack2;" material="src: #wood;" position="-8 0 18" rotation="-90 45 0" scale="0.1 0.1 0.1"></a-entity>
 
-        <a-entity position="6 3.5 17.5" text="value: Click on the radio for some sweet tunes!; color: black; width: 10;" rotation="0 -90 0"></a-entity>
+        <a-entity position="6 3.5 17.5" text="value: Click on the radio for some sweet tunes!; color: black; width: 10;" rotation="0 -45 0"></a-entity>
 
-        <a-entity play-button obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2.5 17" rotation="0 -90 0" scale=".5 .5 .5" sound="src: #music;"></a-entity>
+        <a-entity play-button obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2.5 17" rotation="0 -45 0" scale=".5 .5 .5" sound="src: #music;"></a-entity>
 
-        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="-6 0 25" rotation="0 0 0" scale="3 3 3"></a-entity>
-        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="-3 0 29" rotation="0 45 0" scale="3 3 3"></a-entity>
+        <a-sphere reload radius="0.4" position="-5.5 3.5 14.5" material=" src: #ball-texture-2;"></a-sphere>
+        <a-sphere reload radius="0.4" position="-6.5 2.3 15.5" material=" src: #ball-texture;"></a-sphere>
+        <a-sphere reload radius="0.4" position="-7.5 1.1 16.5" material=" src: #ball-texture-3;"></a-sphere>
+        <a-entity position="-5 5 15" text="value: Click on the ball to restart!; color: black; width: 6;" rotation="0 45 0"></a-entity>
 
-        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="6 0 25" rotation="0 180 0" scale="3 3 3"></a-entity>
-        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="3 0 29" rotation="0 135 0" scale="3 3 3"></a-entity>
+        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="-6 0 25" rotation="0 0 0" scale="2.5 2.5 2.5"></a-entity>
+        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="-3 0 29" rotation="0 45 0" scale="2.5 2.5 2.5"></a-entity>
+
+        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="6 0 25" rotation="0 180 0" scale="2.5 2.5 2.5"></a-entity>
+        <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood;" position="3 0 29" rotation="0 135 0" scale="2.5 2.5 2.5"></a-entity>
 
         <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
             body="type: dynamic; mass: 5; shape: none;"
@@ -117,7 +124,7 @@
         scale=".5 .5 .5">
         </a-entity>
         <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
-        body="type: dynamic; mass: 5; shape: none;"
+        body="type: dynamic; mass: 2; shape: none;"
         shape__main="shape: cylinder;
                 height: 4;
                 radiusTop: 0.6;
@@ -127,7 +134,7 @@
         scale=".5 .5 .5">
         </a-entity>
         <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
-        body="type: dynamic; mass: 5; shape: none;"
+        body="type: dynamic; mass: 2; shape: none;"
         shape__main="shape: cylinder;
                 height: 4;
                 radiusTop: 0.6;
@@ -137,7 +144,7 @@
         scale=".5 .5 .5">
         </a-entity>
         <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
-        body="type: dynamic; mass: 5; shape: none;"
+        body="type: dynamic; mass: 2; shape: none;"
         shape__main="shape: cylinder;
                 height: 4;
                 radiusTop: 0.6;
@@ -146,8 +153,8 @@
         position=".5 0 -12"
         scale=".5 .5 .5">
         </a-entity>
-        <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
-        body="type: dynamic; mass: 5; shape: none;"
+        <a-entity class="pin" obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
+        body="type: dynamic; mass: 2; shape: none;"
         shape__main="shape: cylinder;
                 height: 4;
                 radiusTop: 0.6;
