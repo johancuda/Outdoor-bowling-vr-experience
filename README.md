@@ -20,8 +20,6 @@ In this experience you can:
 
 ## Installation
 
-To test online : visit [this page]().
-
 To test on your machine : download the folder, open it in [VS Code](https://code.visualstudio.com/) and run [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). You're done!
 
 ## Architecture
@@ -69,7 +67,7 @@ A few features we would like to implement would be:
 
 ## Copyright
 
-We used these assets to make this experience :
+We used the following assets to make this experience :
 
 ### Models & textures
 
@@ -94,4 +92,4 @@ We used these assets to make this experience :
 
 ## Aknowledgments
 
-This project was created using ChatGPT for code review and debugging. We want to thank the JS A-Frame community for its help and all the people that create free assets !
+This project was created using ChatGPT for code review, code generation and debugging. We want to thank the JavaScript A-Frame community for its help and all the people that create free assets !
