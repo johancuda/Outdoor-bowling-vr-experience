@@ -59,7 +59,9 @@ This VR experience is based on [ZakAttakk's A-Frame Bowling Game](https://github
 
 A-Frame being mostly improved by open-source projects we ran into compatibility issues between A-Frame versions and certain libraries, such as [aframe-physics-system](https://github.com/c-frame/aframe-physics-system). One of the problem we couldn't solve was the pins getting back up after collision.
 
-We could further this project with improved bowling movements, such ball picking and placing.
+A few bugs sound effects bug might appear after a few iterations of choosing a ball/throwing it, we're currently trying to fix that.
+
+We could further this project with improved bowling movements, such as ball picking and placing.
 
 
 
@@ -80,6 +82,7 @@ We used these assets to make this experience :
 - Bowling ball orange texture on [Freepik](https://www.freepik.com/free-photo/abstract-mix-waves-paint_6120257.htm#fromView=keyword&page=1&position=2&uuid=45365db8-6de5-478d-96a9-74cd152e588a&new_detail=true&query=Orange+Marble)
 - Palette model and textures by [Lucif 3D](https://www.turbosquid.com/3d-models/3d-garden-table-1823963)
 - Wine bottle model and textures by [shmelevartem](https://sketchfab.com/3d-models/bottle-of-wine-9e279fe2d307469f8b6f825728610e8f)
+- Pizza model by [plaggy](https://www.turbosquid.com/3d-models/pizza-salami-2212024)
 
 ### Sound effects & music
 

@@ -38,6 +38,7 @@ AFRAME.registerComponent('play-sound', {
         el.addEventListener('collide', () => {
           console.log("Collision count : " + this.collision_count)
           if(this.collision_count == 0){
+            console.log("Strike!")
             pin.setAttribute('sound', 'src: #strike; autoplay: true; volume: 1;');
             this.collision_count++;
             setTimeout(() => {
@@ -54,6 +55,7 @@ AFRAME.registerComponent('play-sound', {
     this.collision_count = value;
   },
 
+  // Method to get the collision count (for debugging purposes)
   getCollisionCount: function() {
     return this.collision_count;
   }
@@ -77,6 +79,8 @@ AFRAME.registerComponent('reload', {
 
     el.addEventListener('click', () => {
       let ball = scene.querySelector('#theBall');
+      let playSoundComponent = ball.components['play-sound'];
+      console.log("Collision count when reload :" + playSoundComponent.getCollisionCount())
       // Replacing the ball
       ball.setAttribute('position', '0 0.5 13');
       let ballBody = ball.body;
@@ -92,16 +96,16 @@ AFRAME.registerComponent('reload', {
       // Updating ball position
       ball.components["dynamic-body"].syncToPhysics();
 
-      // Reset the sound to roll sound
-      //ball.setAttribute('sound', 'src: #roll; autoplay: false; volume: 1;');
+      ball.addEventListener('collide', ()=> {
+        console.log('collision pas bien')
+      })
 
       // Reset collision count
-      let playSoundComponent = ball.components['play-sound'];
       console.log(playSoundComponent)
       if (playSoundComponent) {
-        console.log("BEfore : " + playSoundComponent.getCollisionCount())
+        setTimeout(() => {
         playSoundComponent.setCollisionCount(0); // Reset collision count
-        console.log("After : " +playSoundComponent.getCollisionCount())
+        }, 500)
       }
     })
   }
