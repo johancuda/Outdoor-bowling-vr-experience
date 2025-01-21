@@ -10,8 +10,17 @@
     <script src="main.js"></script>
 </head>
 <body>
+
+    <!-- Main scene -->
+
     <a-scene physics="gravity: -9.81;" loading-screen="dotsColor: black; backgroundColor: darkseagreen">
+
+        <!-- Assets -->
+
         <a-assets>
+
+            <!-- Models -->
+
             <a-asset-item id="bowling-pin" src="/assets/models/Pin.obj"></a-asset-item>
             <a-asset-item id="bowling-pin-mtl" src="/assets/models/Pin.mtl"></a-asset-item>
             <a-asset-item id="chair" src="assets/models/deck_chair.obj"></a-asset-item>
@@ -28,6 +37,8 @@
 
             <a-asset-item id="wine" src="/assets/models/wine/scene.gltf"></a-asset-item>
 
+            <!-- Textures -->
+
             <img id="ball-texture" src="/assets/img/texture.png">
             <img id="ball-texture-2" src="/assets/img/ball_green.jpg">
             <img id="ball-texture-3" src="/assets/img/ball_orange.jpg">
@@ -38,26 +49,53 @@
             <img id="chair-wood" src ="/assets/img/chair_wood.jpg">
             <img id="chair-wood-2" src ="/assets/img/brown-wooden-texture-flooring-background.jpg">
 
+            <!-- Sounds -->
+
             <audio id="strike" src="/assets/sfx/bowling_strike.mp3" preload="auto"></audio>
             <audio id="roll" src="/assets/sfx/bowling_roll.mp3" preload="auto"></audio>
             <audio id="music" src="/assets/sfx/jazz.mp3" preload="auto"></audio>
         </a-assets>
 
+        <!-- Environment -->
+
         <a-entity environment="preset: forest; ground: flat; skyType: gradient; skyColor: orange;"></a-entity>
+
+        <!-- Achievements list -->
+
+        <a-entity
+            id="achievementList"
+            text="value: Achievements:\n( none yet ); width: 4; align: center; color: black; side: double;"
+            position="-8 3 20"
+            rotation="0 90 0">
+        </a-entity>
+
+        <!-- Ground -->
 
         <a-plane static-body rotation="-90 0 0" position="0 -0.1 0" width="100" height="100"></a-plane>
 
+        <!-- Bowling lane -->
+
         <a-box static-body src="#wooden-floor" depth="30" height="0.2" width="5" rotation="0 0 0" position="0 0 0"></a-box>
 
-        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13" mass="10" sound="src: #roll; on: click; volume: 1;"></a-sphere>
+        <!-- Ball -->
+
+        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13" mass="10" sound="src: #roll; on: click; volume: 1;" unlock-achievement="name: Throw the ball!"></a-sphere>
+
+        <!-- Table with radio on it -->
 
         <a-entity obj-model="obj: #coffee-table;" material="src: #table-texture;" position="6 0 17" scale=".03 .03 .03" rotation="0 -135 0"></a-entity>
 
+        <!-- Ball rack -->
+
         <a-entity obj-model="obj: #rack;" material="src: #table-texture;" position="-8 0 18" rotation="-90 45 0" scale="0.1 0.1 0.1"></a-entity>
 
-        <a-entity position="6 3.5 17.5" text="value: Click on the radio for some sweet tunes!; color: black; width: 10;" rotation="0 -45 0"></a-entity>
+        <!-- Radio and text -->
 
-        <a-entity play-button obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2.5 17" rotation="0 -45 0" scale=".5 .5 .5" sound="src: #music; volume: 0.5;"></a-entity>
+        <a-entity position="6 3.5 17.5" text="value: Click on the radio for some sweet tunes!; color: black; width: 10; side: double;" rotation="0 -45 0"></a-entity>
+
+        <a-entity play-button obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2.5 17" rotation="0 -45 0" scale=".5 .5 .5" sound="src: #music; volume: 0.5;" unlock-achievement="name: Listen to some music."></a-entity>
+
+        <!-- Palette with food and drinks -->
 
         <a-entity obj-model="obj: #palette; mtl: #palette-mtl;" position="0 0 25" rotation="0 90 0" scale="3 3 3"></a-entity>
 
@@ -65,16 +103,23 @@
 
         <a-entity gltf-model="#wine" position="0.5 1.1 26" rotation="0 120 0"></a-entity>
 
-        <a-sphere reload radius="0.4" position="-5.5 3.5 14.5" material=" src: #ball-texture-2;"></a-sphere>
-        <a-sphere reload radius="0.4" position="-6.5 2.3 15.5" material=" src: #ball-texture;"></a-sphere>
-        <a-sphere reload radius="0.4" position="-7.5 1.1 16.5" material=" src: #ball-texture-3;"></a-sphere>
-        <a-entity position="-5 5 15" text="value: Take a bowling ball!; color: black; width: 6;" rotation="0 45 0"></a-entity>
+        <!-- Bowling balls and text-->
+
+        <a-sphere reload radius="0.4" position="-5.5 3.5 14.5" material=" src: #ball-texture-2;" unlock-achievement="name: Change your bowling ball."></a-sphere>
+        <a-sphere reload radius="0.4" position="-6.5 2.3 15.5" material=" src: #ball-texture;" unlock-achievement="name: Change your bowling ball."></a-sphere>
+        <a-sphere reload radius="0.4" position="-7.5 1.1 16.5" material=" src: #ball-texture-3;" unlock-achievement="name: Change your bowling ball."></a-sphere>
+
+        <a-entity position="-5 5 15" text="value: Take a bowling ball!; color: black; width: 6; side: double;" rotation="0 45 0"></a-entity>
+
+        <!-- Chairs -->
 
         <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood-2;" position="-6 0 25" rotation="0 0 0" scale="2.5 2.5 2.5"></a-entity>
         <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood-2;" position="-3 0 29" rotation="0 45 0" scale="2.5 2.5 2.5"></a-entity>
 
         <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood-2;" position="6 0 25" rotation="0 180 0" scale="2.5 2.5 2.5"></a-entity>
         <a-entity dynamic-body obj-model="obj: #chair;" material="src: #chair-wood-2;" position="3 0 29" rotation="0 135 0" scale="2.5 2.5 2.5"></a-entity>
+
+        <!-- Bowling pins -->
 
         <a-entity obj-model="obj: #bowling-pin; mtl: #bowling-pin-mtl"
             body="type: dynamic; mass: 5; shape: none;"

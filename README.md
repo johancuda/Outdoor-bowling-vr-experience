@@ -8,7 +8,7 @@ This project was developed during the class "Réalité virtuelle et augmentée" 
 
 ## Description
 
-This experience tries to recreate a pleasent bowling experience in the wilderness, without the bad music, the weird scents or the unnecessary competitiveness. Enjoy some smooth music, relax and just throw balls at the pins !
+This experience tries to recreate a pleasent bowling experience in the wilderness, without the bad music, the weird scents or the unnecessary competitiveness. Enjoy some smooth music, relax and just throw some balls at the pins !
 
 ### Features
 
@@ -16,6 +16,7 @@ In this experience you can:
 - Choose a bowling ball in the rack by clicking on it (it will appear on the bowling lane)
 - Throw the ball at the pins by interacting with it
 - Listen to some music by interacting with the radio
+- Unlock achievements by playing!
 
 ## Installation
 
@@ -59,9 +60,10 @@ This VR experience is based on [ZakAttakk's A-Frame Bowling Game](https://github
 
 A-Frame being mostly improved by open-source projects we ran into compatibility issues between A-Frame versions and certain libraries, such as [aframe-physics-system](https://github.com/c-frame/aframe-physics-system). One of the problem we couldn't solve was the pins getting back up after collision.
 
-A few bugs sound effects bug might appear after a few iterations of choosing a ball/throwing it, we're currently trying to fix that.
+A few features we would like to implement would be:
 
-We could further this project with improved bowling movements, such as ball picking and placing.
+- Adding a button to get the pins back to their original positions
+- Adding improved bowling movements, such as ball picking and placing
 
 
 

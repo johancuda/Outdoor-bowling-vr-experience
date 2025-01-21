@@ -1,5 +1,6 @@
+/* This script contains AFrame components. */
 
-
+// Component to apply a force to the ball when clicked
 AFRAME.registerComponent('apply-force', {
     init: function () {
       const el = this.el; // Reference to the sphere entity
@@ -24,9 +25,10 @@ AFRAME.registerComponent('apply-force', {
     }
   });
 
-
+// Component to play a strike sound on ball collision
 AFRAME.registerComponent('play-sound', {
     init: function() {
+      // Get the ball, scene and first pin
       let el = this.el;
       let scene = el.sceneEl;
       this.collision_count = 0;
@@ -39,9 +41,11 @@ AFRAME.registerComponent('play-sound', {
           console.log("Collision count : " + this.collision_count)
           if(this.collision_count == 0){
             console.log("Strike!")
+            // Plays strike sound
             pin.setAttribute('sound', 'src: #strike; autoplay: true; volume: 1;');
             this.collision_count++;
             setTimeout(() => {
+              // Removes sound to prevent unwanted behavior
               pin.removeAttribute('sound');
             }, 1000)
           }
@@ -61,6 +65,7 @@ AFRAME.registerComponent('play-sound', {
   }
 })
 
+// Component to start music when the radio is clicked
 AFRAME.registerComponent('play-button', {
   init: function() {
     let el = this.el;
@@ -72,6 +77,7 @@ AFRAME.registerComponent('play-button', {
   }
 })
 
+// Component to get the ball back to it's original position
 AFRAME.registerComponent('reload', {
   init: function(){
     let el = this.el;
@@ -96,10 +102,6 @@ AFRAME.registerComponent('reload', {
       // Updating ball position
       ball.components["dynamic-body"].syncToPhysics();
 
-      ball.addEventListener('collide', ()=> {
-        console.log('collision pas bien')
-      })
-
       // Reset collision count
       console.log(playSoundComponent)
       if (playSoundComponent) {
@@ -110,3 +112,46 @@ AFRAME.registerComponent('reload', {
     })
   }
 })
+
+// Component to display achievements to the player
+AFRAME.registerComponent('unlock-achievement', {
+  schema: {
+    name: { type: 'string' }
+  },
+  init: function () {
+    this.el.addEventListener('click', () => {
+      this.unlockAchievement();
+    });
+  },
+  unlockAchievement: function () {
+    let unlockedAchievements = JSON.parse(localStorage.getItem('achievements')) || [];
+
+    if (!unlockedAchievements.includes(this.data.name)) {
+      alert(`Achievement Unlocked: ${this.data.name}`);
+      unlockedAchievements.push(this.data.name);
+      localStorage.setItem('achievements', JSON.stringify(unlockedAchievements));
+
+      // Update the text entity to display the new list
+      updateAchievementDisplay();
+    } else {
+      console.log(`Achievement "${this.data.name}" is already unlocked.`);
+    }
+  }
+});
+
+// A helper function to update the text entity
+function updateAchievementDisplay() {
+  let unlockedAchievements = JSON.parse(localStorage.getItem('achievements')) || [];
+  let textValue = 'Achievements:\n' + unlockedAchievements.join('\n');
+
+  // Update the A-Frame text entity
+  const textEntity = document.querySelector('#achievementList');
+  if (textEntity) {
+    textEntity.setAttribute('text', 'value', textValue);
+  }
+}
+
+// When the scene loads, update the text once
+window.addEventListener('load', () => {
+  updateAchievementDisplay();
+});
