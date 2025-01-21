@@ -15,10 +15,18 @@
             <a-asset-item id="bowling-pin" src="/assets/models/Pin.obj"></a-asset-item>
             <a-asset-item id="bowling-pin-mtl" src="/assets/models/Pin.mtl"></a-asset-item>
             <a-asset-item id="chair" src="assets/models/deck_chair.obj"></a-asset-item>
+            
 
             <a-asset-item id="coffee-table" src="/assets/models/coffee_table.obj"></a-asset-item>
             <a-asset-item id="rack" src="/assets/models/Rack.obj"></a-asset-item>
             <a-asset-item id="radio" src="/assets/models/Vintage_soviet_radio.obj"></a-asset-item>
+
+            <a-asset-item id="palette" src="/assets/models/Palette_garden_table.obj"></a-asset-item>
+            <a-asset-item id="palette-mtl" src="/assets/models/Palette_garden_table.mtl"></a-asset-item>
+
+            <a-asset-item id="pizza-gltf" src="/assets/models/pizza/scene.gltf"></a-asset-item>
+
+            <a-asset-item id="wine" src="/assets/models/wine/scene.gltf"></a-asset-item>
 
             <img id="ball-texture" src="/assets/img/texture.png">
             <img id="ball-texture-2" src="/assets/img/ball_green.jpg">
@@ -29,20 +37,19 @@
             <img id="wood" src ="/assets/img/wood.jpg">
             <img id="chair-wood" src ="/assets/img/chair_wood.jpg">
             <img id="chair-wood-2" src ="brown-wooden-texture-flooring-background.jpg">
-            <img id="test-wood" src="yellow_pine_01_12.jpg">
 
             <audio id="strike" src="/assets/sfx/bowling_strike.mp3" preload="auto"></audio>
             <audio id="roll" src="/assets/sfx/bowling_roll.mp3" preload="auto"></audio>
             <audio id="music" src="/assets/sfx/jazz.mp3" preload="auto"></audio>
         </a-assets>
 
-        <a-entity environment="preset: forest; ground: flat;"></a-entity>
+        <a-entity environment="preset: forest; ground: flat; skyType: gradient; skyColor: orange;"></a-entity>
 
         <a-plane static-body rotation="-90 0 0" position="0 -0.1 0" width="100" height="100"></a-plane>
 
         <a-box static-body src="#wooden-floor" depth="30" height="0.2" width="5" rotation="0 0 0" position="0 0 0"></a-box>
 
-        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13" mass="10" sound="src: #roll; on: click; volume: 1;"></a-sphere>
+        <a-sphere apply-force play-sound id="theBall" src="#ball-texture" dynamic-body segmentsWidth="5" radius="0.4" position="0 0.5 13" mass="10" sound="src: #roll; on: click; volume: 0.5;"></a-sphere>
 
         <a-entity obj-model="obj: #coffee-table;" material="src: #table-texture;" position="6 0 17" scale=".03 .03 .03" rotation="0 -135 0"></a-entity>
 
@@ -51,6 +58,12 @@
         <a-entity position="6 3.5 17.5" text="value: Click on the radio for some sweet tunes!; color: black; width: 10;" rotation="0 -45 0"></a-entity>
 
         <a-entity play-button obj-model="obj: #radio;" material="src: #radio-texture;" position="6 2.5 17" rotation="0 -45 0" scale=".5 .5 .5" sound="src: #music;"></a-entity>
+
+        <a-entity obj-model="obj: #palette; mtl: #palette-mtl;" position="0 0 25" rotation="0 90 0" scale="3 3 3"></a-entity>
+
+        <a-entity gltf-model="#pizza-gltf" position="0 1.1 25" scale="4 2 4"></a-entity>
+
+        <a-entity gltf-model="#wine" position="0.5 1.1 26" rotation="0 120 0"></a-entity>
 
         <a-sphere reload radius="0.4" position="-5.5 3.5 14.5" material=" src: #ball-texture-2;"></a-sphere>
         <a-sphere reload radius="0.4" position="-6.5 2.3 15.5" material=" src: #ball-texture;"></a-sphere>

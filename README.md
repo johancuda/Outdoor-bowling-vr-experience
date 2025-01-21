@@ -78,6 +78,8 @@ We used these assets to make this experience :
 - Bowling ball texture 1 on [Kenflin's github](https://github.com/Kenflin/bowling-aframe/blob/main/assets/bowlingball.png)
 - Bowling ball green texture on [Freepik](https://www.freepik.com/free-photo/multi-colored-psychedelic-background_11761247.htm#fromView=keyword&page=1&position=4&uuid=27cedf6d-b760-4587-9236-764872882471&new_detail=true&query=Green+Marble+Texture)
 - Bowling ball orange texture on [Freepik](https://www.freepik.com/free-photo/abstract-mix-waves-paint_6120257.htm#fromView=keyword&page=1&position=2&uuid=45365db8-6de5-478d-96a9-74cd152e588a&new_detail=true&query=Orange+Marble)
+- Palette model and textures by [Lucif 3D](https://www.turbosquid.com/3d-models/3d-garden-table-1823963)
+- Wine bottle model and textures by [shmelevartem](https://sketchfab.com/3d-models/bottle-of-wine-9e279fe2d307469f8b6f825728610e8f)
 
 ### Sound effects & music
 
