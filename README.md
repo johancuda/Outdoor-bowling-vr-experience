@@ -14,9 +14,9 @@ This experience tries to recreate a pleasent bowling experience in the wildernes
 
 In this experience you can:
 - Choose a bowling ball in the rack by clicking on it (it will appear on the bowling lane)
-- Throw the ball at the pins by interacting with it
-- Listen to some music by interacting with the radio
-- Unlock achievements by playing!
+- Throw the ball at the pins by interacting with it (implemented using the physics system to handle collisions)
+- Listen to some music by interacting with the radio (if the music doesn't start click another time – see [Issues & improvements](#issues--improvements) for further informations)
+- Unlock achievements by playing! (implemented using LocalStorage to keep track of the achievements you already unlocked)
 
 ## Installation
 
@@ -56,11 +56,21 @@ This VR experience is based on [ZakAttakk's A-Frame Bowling Game](https://github
 
 ## Issues & improvements
 
-A-Frame being mostly improved by open-source projects we ran into compatibility issues between A-Frame versions and certain libraries, such as [aframe-physics-system](https://github.com/c-frame/aframe-physics-system). One of the problem we couldn't solve was the pins getting back up after collision.
+Most modern web browsers try and block autoplaying music on a website so you have to either click two times on the radio or have any kind of interaction in the VR experience before being able to play music on the radio.
+
+### Physics
+
+A-Frame being mostly improved by open-source projects we ran into compatibility issues between A-Frame versions and certain libraries, such as [aframe-physics-system](https://github.com/c-frame/aframe-physics-system). One of the problem we couldn't solve was the pins getting back up after collision. 
+
+### Bugs
+
+You might notice bugs with the physics system or sounds, if that's the case just reload the page.
+
+### TODO
 
 A few features we would like to implement would be:
 
-- Adding a button to get the pins back to their original positions
+- Adding a button to get the pins back to their original positions. This is currently not possible due to an incompatibility between certain 3D models handlers and the physics system.
 - Adding improved bowling movements, such as ball picking and placing
 
 
