@@ -8,6 +8,7 @@ AFRAME.registerComponent('apply-force', {
       el.addEventListener('click', function () {
         const body = el.body; // Access the physics body
         if (body) {
+          console.log(el.object3D)
           // Get forward direction from camera.
           let forward = new THREE.Vector3(0, 0, -1);
           forward.applyQuaternion(cameraEl.object3D.quaternion);
@@ -155,3 +156,33 @@ function updateAchievementDisplay() {
 window.addEventListener('load', () => {
   updateAchievementDisplay();
 });
+
+
+// Component to detect when the ball exits the lane
+AFRAME.registerComponent('position-handler', {
+  tick: function() {
+    // Get the ball position
+    let pos = this.el.object3D.position;
+    let y = pos.y;
+
+    // Floor y-axis position
+    let floor_y = 0.4;
+
+    if(y < floor_y) {
+    setTimeout(() => {
+      let body = this.el.body;
+
+      this.el.setAttribute('position', '0 0.5 13');
+
+      if (body) {
+        // Setting speed to 0
+        body.velocity.set(0, 0, 0); // Stop motion
+        body.angularVelocity.set(0, 0, 0); // Stop rotation
+      }
+      // Updating ball position
+      this.el.components["dynamic-body"].syncToPhysics();
+    }, 500)
+  }
+
+} 
+}) 
