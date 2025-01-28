@@ -12,7 +12,7 @@ AFRAME.registerComponent('apply-force', {
           // Get forward direction from camera.
           let forward = new THREE.Vector3(0, 0, -1);
           forward.applyQuaternion(cameraEl.object3D.quaternion);
-          forward.multiplyScalar(100);  // Adjust to your liking
+          forward.multiplyScalar(190);  // Adjust to your liking
 
           // Convert to Cannon Vec3
           let force = new CANNON.Vec3(forward.x, 0, forward.z);
